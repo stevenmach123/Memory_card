@@ -1,0 +1,382 @@
+ion-content.body{
+  --background: rgb(226, 216, 216);
+  --overflow:hidden;
+}
+.bo{
+  padding:0.7rem;
+  width: calc(100% - 8rem);
+  margin-left:8rem;
+  transition: all 0.6s ease;
+  z-index:10;
+  border:3px solid red;
+
+  
+}
+.mid-screen{
+  width: calc(100% - 8rem - 0.3rem);
+  margin-left:calc(8rem + 0.3rem);
+} 
+
+.big-screen{
+  width: calc(100% - 8rem - 0.3rem);
+  margin-left:calc(8rem + 0.3rem);
+ 
+
+}
+
+.big-screen2{
+  width: calc(100% - 74px - 0.3rem);
+  margin-left:calc(74px + 0.3rem);
+
+  
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+
+ 
+  .top_bar{
+    position:fixed;
+    display:flex;
+    justify-content:space-around;
+    gap:1px;
+    border-bottom:  1px solid rgb(171, 170, 170);
+    padding-bottom: 3px;
+     background-color: rgb(226, 216, 216); //***
+    height: 50px;
+    z-index:99; //*** need z-index of this parent, os #wecontent .searchbox can overlap cards below
+  
+    /*   // do not give class for mat-form-field, its width is imdependent
+    .search-bar{
+     width:10%
+    }  */
+
+    .mat-search-bar{
+    
+      width:60%; 
+      transform: translateY(-15px); 
+    
+    }
+    .top_icons{
+       display:flex;
+      flex-direction: row-reverse;
+    
+      width:36%;
+      justify-content: space-between;
+      
+    
+      .cards{
+        border-radius:50%;
+        border: 1px solid black;
+        color:black;
+        background: none;
+        width:30px;
+        align-self: center;
+        .add-card{
+            font-size:26px;
+        }
+      }
+   
+      .top_search{
+         border-radius:50%;
+        font-size:10px;
+        border: 1px solid black;
+        background: none;
+        width: 47px;
+        line-height: 30px;
+        align-self: center;
+        
+
+      }
+
+
+
+
+
+    }
+    
+  }
+
+
+
+
+}
+.opa{
+   opacity: 0.4;
+}
+
+.searchbox{
+  list-style: none;
+  box-shadow:0.1rem 0.2rem 0.4rem 0rem #8690a3;
+  background-color:aliceblue;
+  position:fixed;
+  z-index:1001 !important;
+  min-width: fit-content;
+  width:10rem;
+ 
+  transform: translate(-4.2rem,25px);
+
+  
+
+  li{
+    margin-left:-30px;
+  }
+  
+
+}
+.nomatchbox{
+    display:flex;
+    
+    position:fixed;
+    transform: translate(-4.2rem,40px);
+    box-sizing: border-box;
+    width:10rem;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
+    .n_content{
+      display: flex;
+      overflow: auto;
+      text-align: center;
+      box-shadow:0 0rem 0.4rem 0rem #8690a3;
+      background-color:  rgb(248, 133, 133);
+      
+      
+    }
+}
+
+
+.top-icon{
+ 
+  background: none;
+  float:right;
+  border: 1.2px solid black;
+  border-radius: 50%;
+  margin-left:2px;
+  
+
+  ion-icon{
+    font-size:20px;height:25px;
+    
+  
+  }
+  
+}
+
+.those_stars{
+  .mystar{
+    margin-right:8px;
+    font-size: 15px;
+  
+    
+  }
+}
+
+
+
+::ng-deep .mat-menu-content { //only option 
+ 
+  width: fit-content !important;
+  height: fit-content !important; 
+  overflow:scroll !important;
+ 
+  padding: 0px !important;
+  margin:0px !important;
+  background-color:blue !important ;
+
+}
+::ng-deep .mat-menus{   // only option 
+  background:pink;
+  
+
+}
+
+
+
+
+.mat-selects{  //any is fine
+  background:linear-gradient(to right, black 65%, white 32%) right;
+  width:50px !important;
+  border:1px solid black
+  
+}
+
+.form2 ::ng-deep .mat-form-field-infix{ 
+  width: 45px !important;
+  background:linear-gradient(to right, red 65%, white 30%) right;
+  height: 7px !important;
+ 
+}
+
+mat-form-field.form-card {
+  width: 130px !important;
+  height: 10px !important;
+}
+
+
+ mat-options{
+  
+  padding:0px !important;
+  margin:0px !important;
+  
+  
+}
+//--
+
+::ng-deep  .my-panel{
+  margin: 0px !important;padding: 0px !important;
+  width:fit-content !important;
+  max-height: 60px !important ;
+  overflow: scroll !important;
+
+  
+}
+::ng-deep .my-panel-card{
+  margin: 0px !important;padding: 0px !important;
+  overflow: scroll !important;
+  max-height:100px !important ;
+  width:fit-content !important;
+  transform: translateY(20px)!important;
+}
+
+::ng-deep .matselect0 .mat-select-value-text{
+visibility: hidden !important;
+  
+ }
+
+table.table_skill{
+   tr{
+
+    td{
+     
+      input.table_input_des{
+        background:none;
+        background-color:none; 
+        border:none;
+        width:50px
+       }
+
+    }
+    td.td_font {
+      min-width:45px;
+      margin-right:8px;
+    
+    }
+    td.td_third{
+    
+      max-width:50px;
+     
+    }
+    td.td_forth{
+       padding-left:4px;
+      
+    }
+
+   }
+
+   .table_form_field{
+      width:90px;
+       
+   
+   }
+}
+
+.myposition ::ng-deep .mat-form-field-infix{
+  width: 60px;
+  
+} 
+.myposition2 ::ng-deep .mat-form-field-infix{
+  width: 40px;
+  
+} 
+
+
+
+
+
+
+
+
+
+
+
+/*//---
+::ng-deep .matselect0 .mat-select-value-text{
+ color:red;
+ 
+}
+
+::ng-deep .matselect1 .mat-select-value-text{
+  color:purple;
+}
+
+::ng-deep .matselect2 .mat-select-value-text{
+  color:orange;
+
+}
+::ng-deep .matselect3 .mat-select-value-text{
+  color:rgb(0, 255, 200);
+
+}
+::ng-deep .matselect4 .mat-select-value-text{
+  color:rgb(231, 227, 12);
+
+}
+::ng-deep .matselect5 .mat-select-value-text{
+  color:rgb(170, 163, 163)
+
+}
+::ng-deep .matselect6 .mat-select-value-text{
+  color:rgb(194, 73, 97)
+
+}
+
+
+
+
+//---  */
+
+
+
+  .size-item-color{
+    height:20px;width:100%;
+
+  }
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48,
+  
+}
+
+ion-modal::part(handle){
+  background-color: rgb(101, 145, 211);
+  width: 100px;
+  height:8px;
+}
+ion-modal::part(backdrop){
+  background-color: rgba(129, 132, 139, 0.714);
+}
+
+ion-modal::part(content) {
+  border-radius: 2%;
+  box-shadow: 0px 0px 20px 5px rgb(0 0 0 / 32%);
+}
+
+ion-modal button.mat-fab.del{
+  line-height: 1px;
+  padding:0px
+}
+
+
+
+
+
+
+.hid{
+  display:none;
+
+}
+
+

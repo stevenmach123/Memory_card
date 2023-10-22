@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hello</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div>{{student.name}}{{" "}}{{student.id}}</div>
+  <div> 
+    <button mat-raised-button (click)="bye()">GoBack</button>
+  </div>
+
+
+  <form #big="ngForm" (ngSubmit)="doSubmit(big)" >
+    <mat-form-field > 
+      <mat-label>Insert</mat-label>
+      <input matInput autocomplete="off" name="name"   [formControl]="nameForm" required >
+    </mat-form-field> 
+
+    <mat-form-field  appearance="standard">
+      <mat-label>Insert</mat-label>
+      <input  matInput autocomplete="off" name="id"  [formControl]="idForm"> 
+    </mat-form-field>
+    <button type="submit" mat-raised-button>Submit </button>
+  </form>
+
+  
+</ion-content>

@@ -1,0 +1,114 @@
+
+<div #w class="common" [class]= "collapsed ? 'sidenav-collapsed' :'sidenav' "  >
+  <div class="logo-container">
+    <!--<button class="logo"  (click)="collapsed=!collapsed;">A</button>  -->
+   <!-- <div class="logo-text"  >Angular</div> -->
+    <button  class="btn-close" [@rotate]="!collapsed ? 'next' : 'initial' " (click)="collapsed=!collapsed;collapsed?scroll_nav2():see_myadd() " > <!--*ngIf= "!collapsed" -->
+      <ion-icon class="close-icon" name="arrow-forward-outline"></ion-icon>    
+    </button>
+  </div>
+
+ <!--<ul  class="sidenav-nav">
+    
+
+      <li class="nav-item"  *ngFor="let dash of dashes$ |async" >
+       <a  class="nav-link" [routerLink]="['product',{name:dash.name,id:dash.id}]" > 
+        <span class="nav-link-text">{{dash.name}}</span>
+
+       </a>
+      </li>    
+
+
+   
+      <li class="nav-item" *ngFor="let ar of arr|async"  >
+        <a class="nav-link">{{ar}}</a>
+
+      </li>  
+    
+
+  </ul>          -->
+  
+
+  <div #sidenav2 class="sidenav-nav2"  > <!--*ngIf="!collapsed"  [style.visibility]="!collapsed?'visible':'hidden' " -->
+    <ng-container  class="container_group" *ngFor="let group of mygroups" >
+
+      <div class="box_group" *ngIf="group.appear_slide"  >
+        <button (click)="closeGPanel(group)"   #plus class="box_mark">+</button>
+        <span  [@slide]="!collapsed ?'initial': 'next' "  class="box_title">{{group.group_name}}</span> 
+      </div>
+     
+    <ng-container  *ngFor="let star of [5,4,3,2,1]" > 
+        <div class="flex_card" [style.display]="group.group_name===item.value.group && star===item.value.star?'flex':'none'  "  *ngFor="let item of myadd2|async|keyvalue;index as i" >
+       
+          
+          
+          
+          <div @slide class="icon_present" (click)="openS(item.value)" >
+            <div class="div_img" [style.display]="item.value.img.url===undefined?'none':'flex' "  ><img class="src_img" [src]="item.value.img.url"    > </div>
+            <ion-icon  class="mycamera1" [style.display]="!item.value.img.url?'flex':'none'"   name="images-outline"></ion-icon>
+          </div>
+
+        
+
+          
+          <mat-expansion-panel  #expand_panel  [(expanded)]="item.value.toggle"   style="min-width:fit-content;text-align: center;margin-bottom:1px"  >
+              <mat-expansion-panel-header >
+                <!--<div style="display: flex !important;justify-content: center !important;"> </div> -->
+                  <div style="width:100%;margin:auto;margin-left:-10px">{{item.key}}</div> 
+                
+                
+              </mat-expansion-panel-header>
+              <mat-panel-description>
+                
+              </mat-panel-description>
+
+              <div  class="those_stars" style="margin-left:6px;display: flex;">
+                <div ><span style="font-weight:900px; font-size:17px;margin-right:4px">{{item.value.star}}</span>  <i   class="fa-solid fa-star  mystar"></i></div>
+                
+              </div>  
+               
+                <ng-container  *ngFor="let mini of item.value.arr_my_list">
+                 
+                    <div *ngIf="mini[1].position.index===1"   style="display:flex;justify-content:space-around;column-gap: 8px  ;padding:0px 2px 0px 2px;margin-bottom:5px">
+                  
+                      <li #li1 [ngClass]="['bul'+mini[1].bul[0]]" class="bi b1" [style]="{'color':mini[1].mycolor,'margin-right':'10px'}"><span class="at1" >{{mini[1].attr1}}: </span><span class="at2">{{mini[0]}}</span>    </li> 
+                      <li [ngClass]="['bul'+mini[1].bul[1]]" *ngIf="mini[1].lv !=='' "  class="bi b1" [style]="{'color':mini[1].mycolor,'list-style-type':mini[1].bul[1] }"> <span class="at1" >{{mini[1].attr2}}: </span> <span #span_at2_word   class="at2"> {{mini[1].lv }} </span>     </li>
+                      
+                  </div>
+                  <div *ngIf="mini[1].position.index===2"  style="margin-bottom:5px">
+                    <li [ngClass]="['bul'+mini[1].bul[0]]" class="bi b1" [style.text-align]="mini[1].lv ===''?'left !important':'center !important'  "  [style]="{'color':mini[1].mycolor}"><span class="at1" >{{mini[1].attr1}}: </span><span class="at2">{{mini[0]}} </span>    </li>
+                    <li [ngClass]="['bul'+mini[1].bul[1]]" *ngIf="mini[1].lv !=='' "  class="bi b1" [style]="{'color':mini[1].mycolor,'text-align':'left !important','list-style-type':mini[1].bul[1] }"> <span class="at1" >{{mini[1].attr2}}: </span> <span #span_at2_word   class="at2"> {{mini[1].lv }} </span>     </li>
+
+
+                  </div> 
+                 </ng-container>  
+            
+            
+            
+            </mat-expansion-panel>  
+         
+
+
+
+        
+      </div>
+
+    </ng-container>
+  </ng-container>
+
+  
+  </div>
+  
+  
+
+
+
+  
+
+</div>
+
+
+
+<!--
+[style.font-size] = 'data.name =="Product' :30px" 
+-->

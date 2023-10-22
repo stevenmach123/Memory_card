@@ -1,0 +1,69 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+.custom_modal{
+   // --backdrop-opacity: 1;
+   //backdrop-filter: blur(1.5px);
+   &::part(backdrop) {
+        background-color: rgba(129, 132, 139, 0.714);
+    }
+    
+    &::part(handle) {
+      background-color: rgb(101, 145, 211);
+      width: 100px;
+      height:8px
+    }
+    &::part(content) {
+        border-radius: 2%;
+        box-shadow: 0px 0px 20px 5px rgb(0 0 0 / 32%);
+    }
+    
+  }
+  ::ng-deep .cdk-global-overlay-wrapper, .cdk-overlay-container {
+    z-index: 9999 !important;
+    
+ }
+
+
+html,body,.content-wrapper {
+
+
+ position:initial !important;
+ overflow: auto !important;
+  min-height: 100%;
+
+
+
+}
+
+
+mdl-layout {
+  overflow: visible;
+  min-height: 100%;
+}

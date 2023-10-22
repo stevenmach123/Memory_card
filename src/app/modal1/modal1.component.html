@@ -1,0 +1,140 @@
+<ion-content style="padding:10px;z-index:0 ">
+  <ion-header translucent>  
+    <ion-toolbar >
+      <ion-title>Minor Setting</ion-title>  
+     
+    </ion-toolbar>
+  </ion-header>
+
+
+
+  <div style="text-align: center; font-size:25px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif  ;font-weight:700px;font-style: italic   ;width:100%">{{title}}</div> 
+  <table>
+ 
+    <tr>
+      <td class="font_td" ><span #n1>1.</span></td>
+       <td style="width:40px" >  
+          <mat-form-field  class="input_width" appearance="standard">
+              <mat-label>Attribute 1</mat-label>  
+              <input (keyup)="hi()" [formControl]="attr1_control" matInput placeholder="insert" [ngModel]>
+          </mat-form-field>  
+      </td>
+
+      <td class="third_td">
+        <button mat-button mat-raised-button  id="pop_modal"><span>{{bullets[id1_bul2]}}</span></button>
+        <ion-popover class="let_pop" trigger="pop_modal" >
+          <ng-template>
+          
+          <ion-header>
+            <ion-toolbar>
+              <div style="text-align: center;font: italic 20px bold Georgia, serif">Bullet-Points </div>
+            </ion-toolbar>
+          </ion-header>
+           
+        
+          <ion-content class="ion-no-margin ">
+          
+            <ion-list>
+              <ion-item class="ion-no-padding ion-no-margin"*ngFor="let bullet of bullets,index as i" [ngClass]="{'gray':i%2==0? true : false }" ><div #div_bullet (click)="bull_select(i)" [id]="'bull'+i" style="text-align: center;width:100%" [ngClass]="{dumb_img:id1_bul == div_bullet.id,bigger_text: bullet==' ◦ '|| bullet==' ▪ ' || bullet==' • ' }" > <span> {{bullet}} </span> </div></ion-item>
+            </ion-list>
+    
+          </ion-content>
+          </ng-template>
+    
+    
+        </ion-popover>
+      </td> 
+
+      <td  #forth_td class="forth_td">  
+        <ion-select [formControl]="type1_control" interface="popover" placeholder="Type">
+          <ion-select-option value="numbers">Numbers</ion-select-option>
+          <ion-select-option value="characters">Characters</ion-select-option>
+        
+        </ion-select>
+      </td>
+      <td class="fifth_td">
+          <mat-slide-toggle
+          class="example-margin"
+          color="primary"
+          [checked]="checked1"
+          (toggleChange)="toggle1()"
+          >
+              
+        </mat-slide-toggle>
+      <td>
+
+      </td>
+
+    </tr>
+
+    <tr>
+      <td class="font_td"><span #n2>2.</span></td> 
+      <td >  
+        <mat-form-field  class="input_width" appearance="standard">
+            <mat-label>Attribute 2</mat-label>  
+            <input [formControl]="attr2_control" matInput placeholder="insert" [ngModel]>
+        </mat-form-field>  
+      </td>
+      <td class="third_td">
+        <button mat-button mat-raised-button  id="pop_modal2"><span>{{bullets[id2_bul2]}}</span></button>
+        <ion-popover class="let_pop" trigger="pop_modal2"  >
+          <ng-template>
+          
+          <ion-header>
+            <ion-toolbar>
+              <div style="text-align: center;font: italic 20px bold Georgia, serif">Bullet-Points </div>
+            </ion-toolbar>
+          </ion-header>
+           
+        
+          <ion-content class="ion-no-margin ">
+          
+            <ion-list>
+              <ion-item class="ion-no-padding ion-no-margin"*ngFor="let bullet of bullets,index as i" [ngClass]="{'gray':i%2==0? true : false }" ><div #div_bullet (click)="bull2_select(i)" [id]="'cull'+i" style="text-align: center;width:100%" [ngClass]="{dumb_img:id2_bul == div_bullet.id,bigger_text: bullet==' ◦ '|| bullet==' ▪ ' || bullet==' • ' }" > <span> {{bullet}} </span> </div></ion-item>
+            </ion-list>
+    
+          </ion-content>
+          </ng-template>
+    
+    
+        </ion-popover>
+      </td> 
+
+      <td  class="forth_td">
+        <ion-select [formControl]="type2_control" interface="popover" placeholder="Type">
+          <ion-select-option value="numbers">Numbers</ion-select-option>
+          <ion-select-option value="characters">Characters</ion-select-option>
+        
+        </ion-select>
+      </td>
+      <td>
+        <mat-slide-toggle
+        class="example-margin"
+        color="primary"
+        [checked]="checked2"
+        (toggleChange)="toggle2()"
+        >
+            
+      </mat-slide-toggle>
+      </td>
+      
+    </tr>
+
+    
+  </table>
+  <div #big class="pad" style="display:flex; flex-direction:column ;align-items: center;">  
+    
+    <input #select_input multiple style="display:none" (change)="onFileSelect($event,myimage)" type="file" accept="image/*"> 
+    <div #image_container (click)="select_input.click()"   class="image_container" > 
+        <div class="myimage"  ><img style="display:none" #myimage [src]="the_image.url"></div>
+        <div class="camera"> <i class="fa fa-camera mycamera"></i></div>
+        <div class="wrap"> Insert Image here </div> 
+       
+      
+    </div>
+    <ion-button (click)="remove_img(myimage)" style="height:28px"  color="danger">Remove</ion-button>
+    <ion-button  (click)="confirm()">Confirm</ion-button>
+  
+  </div>
+
+</ion-content>

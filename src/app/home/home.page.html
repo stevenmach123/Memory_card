@@ -1,0 +1,468 @@
+
+<!-- CREATED BY STUPID MACH GIA KHANG xD -->
+
+<ion-content  class="body">
+  
+
+  <div #sidenav>
+  <app-sidenav #side [out_click]="collap" [myadd]="myadd" [mygroups]="mygroups"  (dash_emit)="transfer($event)" (out_arr)="transfer2($event)" (out)="screen($event)"> 
+  </app-sidenav>  
+  </div>
+
+
+  <div   [ngClass]="'big-screen2'" >
+    
+    <router-outlet></router-outlet>   
+
+  <!--  <div style="border:1px solid black; background-color:white ;width: 45px ;padding:0px;margin:0px" mat-raised-button  [mat-menu-trigger-for]="menu" >
+      <div style="display:flex;justify-content: space-around;align-items: center;"> 
+        <div style= "width:35px;height:20px;background-color: red;"> </div>
+        <ion-icon style="width:20px" name="chevron-down-outline"></ion-icon>
+      </div>
+      
+    </div>
+
+    <mat-menu class="mat-menus"  #menu="matMenu">
+      <div class="size-item-color" mat-menu-item style="background-color:pink;"></div>
+      <div class="size-item-color" mat-menu-item style="background-color:yellow "></div> 
+      
+    </mat-menu>   -->
+
+
+    <!--
+  <div>{{student.name}}{{" "}}{{student.id}}</div>
+  <button mat-raised-button id="pop" (click)="openPopUp($event)"  id="hello" >Pop</button> 
+    -->
+
+  </div>
+
+
+
+  <div  [ngClass]="'big-screen2'">
+    
+   
+    <!--
+    <mat-grid-list cols="2" rowHeight="30px">
+      <form>
+      <mat-grid-tile><input autocomplete="off" style="width:100px"  name="add" [(ngModel)]="add"> </mat-grid-tile>
+      <mat-grid-tile><ion-button (click)="addItem()"  style="font-size:10px;width:60px" type="submit" >Add</ion-button> </mat-grid-tile>
+
+      <mat-grid-tile><input autocomplete="off"  style="width:100px"  name="add2" [(ngModel)]="add2"> </mat-grid-tile>
+      <mat-grid-tile><ion-button (click)="addItem2()"  style="font-size:10px;width:60px" type="submit" >Add2</ion-button> </mat-grid-tile>
+      
+      <mat-grid-tile><input autocomplete="off"  style="width:100px" #w  name="search" > </mat-grid-tile>
+      <mat-grid-tile><ion-button (click)="searchItem(w)"  style="font-size:10px;width:60px" type="submit" >Search</ion-button> </mat-grid-tile>
+    </form>
+    </mat-grid-list>  
+
+
+
+   <p>------</p>
+   <div style="display:flex;width:100%;justify-content: space-around;">
+      <div style="display:flex;flex-direction:column ;" >
+      <div  *ngFor="let data of mysubject|async"><span>{{data.name}}</span>&nbsp;<span>{{data.id}}</span></div>
+
+    </div> 
+    </div>
+   
+    <div style="display:flex;width:100%;justify-content: space-around;">
+
+    <div style="display:flex;flex-direction:column ;" >
+      <div  *ngFor="let data of mycomb|async"><span>{{data.name}}</span>&nbsp;<span>{{data.id}}</span></div>
+
+    </div> 
+
+    <div style="display:flex;flex-direction:column;" >
+      <div  *ngFor="let e of mycomb3|async"><span>s{{e.name}}</span>&nbsp;<span>{{e.id}}</span></div>
+    </div>  
+
+
+    <div style="display:flex;flex-direction:column;" >
+      <div  *ngFor="let data of mycomb2| async"><span>{{data.name}}</span>&nbsp;<span>{{data.id}}</span></div>   
+    </div> 
+
+
+  </div>        -->
+
+   <!-- <ion-button (click)="oo()"  style="font-size:10px;width:60px" type="submit" >OO</ion-button>
+
+
+    <div>{{mysubject2|async}}</div>  -->
+
+   
+    <div class="top_bar">
+ 
+      <mat-form-field appearance="standard"  class="mat-search-bar" >
+        <mat-label >Search</mat-label>
+        <input #we type="text" autocomplete="off" (focus)="searchWord(we)"  (keyup)="searchWord(we)"  matInput placeholder="insert" name="search"> 
+        <mat-icon matSuffix><ion-icon name="search-outline"></ion-icon></mat-icon>
+        
+      </mat-form-field>
+
+      <ul  #wecontent class="searchbox"  >
+        <ng-container *ngFor="let item of founds"    >
+           <li (click)="selectItem(item,we)"><ion-icon name="arrow-redo-outline"></ion-icon>{{item}}</li>
+        </ng-container>
+        
+       </ul>
+      <div #nomatchbox class="nomatchbox" > 
+        <div *ngIf="no_match" [@nomatch]="'init'"  class="n_content">
+          Name not match with cards created
+
+        </div>
+      </div>
+       <div class="top_icons"> 
+          <button id="add_player" class="cards" ><ion-icon class="add-card" name="add-outline"></ion-icon> </button> 
+          <button #collectBut (click)="confirmItem(we)" class="top_search"  >Collect</button>
+        
+       </div>
+
+    </div>
+  
+
+    <div style="display:flex; flex-wrap: wrap;">
+   
+
+      
+
+      
+   </div>
+
+ 
+
+  <form  (ngSubmit)="onsubmit()" [formGroup]="biginfo" style ="display:flex;flex-direction: column;margin-top:54px;height:93vh;overflow:scroll" >
+
+
+    <ion-popover #add_player trigger="add_player" side="bottom" >
+      <ng-template>
+        <ion-content scroll-y="false"  >
+          <div style="margin:5px">
+
+          <mat-form-field appearance="standard">
+            <mat-label for="first">Name</mat-label>
+            <input   autocomplete="off" type="text" matInput placeholder="insert" name="name"  [(ngModel)]="firstName" formControlName ="first"> 
+          </mat-form-field>
+
+          <mat-form-field appearance="standard">
+            <mat-label for="attribute">Description</mat-label>
+            <input   autocomplete="off" type="text"  matInput placeholder="insert" name="attribute" [(ngModel)]="attribute"  formControlName ="attribute"> 
+          </mat-form-field>
+
+          <div style="display:flex;"> 
+            <button  mat-raised-button color="accent"  style="font-size:10px;width:60px;margin-right:10px" (click)="addPlayer()">Add</button>
+            <button   mat-raised-button color="accent" expand="full" id="openGroup" style="font-size:10px;width:60px" (click)="addPlayer()">+ Group</button>
+          </div>
+        
+        </div>
+
+
+
+          <ion-modal trigger="openGroup" [initialBreakpoint]="0.75" [breakpoints]="[0,0.75]" [canDismiss]="true" (didDismiss)="group_dismiss()" >
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Create Group</ion-title>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content>
+      
+                <div style="display:flex; justify-content: center;align-items: center;"> 
+                  <mat-form-field style="width:100px; margin-right:10px" appearance="standard">
+                    <mat-label>Group</mat-label>
+                    <input  matInput [formControl]="groups"  >
+                  </mat-form-field>
+                  <ion-button (click)="add_group()" style="width:20px;height:30px;--background:purple" >+</ion-button>
+                </div>
+                <ion-list>
+      
+      
+      
+                  <ion-item-sliding disabled="true" #itemSlide (click)="close(itemSlide,item,i)"  *ngFor="let group of mygroups;index as i" [class.hid]="group.group_name==='' "   >
+                    <ion-item >
+                      <div #item style="display:flex;justify-content: space-between;width:100% ">
+                        <span>{{group.group_name}}</span>
+                        <div (click)="open(itemSlide,item,i)"  [@red_rotate]="mygroups[i].opened? 'end' :'initial'" style="background:red ;border-radius:50%; height:30px; padding: 0px 10px" ><span style="font-size:24px;color:white;line-height: 27px;">-</span></div>
+                       
+                      </div>
+                    </ion-item>
+                    <ion-item-options >
+                       <ion-button #button (click)="delete_group(group.group_name)" color="danger" ><ion-icon style="font-size:16px;color:white" name="trash-outline"></ion-icon><span style="color:white;font-size:15px">Delete</span></ion-button>
+                    </ion-item-options>
+      
+                  </ion-item-sliding>
+      
+      
+      
+      
+                  
+                </ion-list>
+                
+            </ion-content>
+      
+    
+            </ng-template>
+      
+      
+          </ion-modal>
+
+
+
+
+      
+        </ion-content>
+
+      </ng-template>
+
+    </ion-popover>
+
+
+
+    
+
+
+
+
+  
+  <div  formGroupName="address" style ="display:flex;flex-direction: column;"  >
+    <h2 style="margin-bottom:10px"  >Cards</h2>
+   <!-- <input  name="local" formControlName ="local">  -->
+
+    <div   formArrayName = "ab">
+      
+      <form [@card_appear]="'settle'" *ngFor ="let _ of getAB().controls; index as i" #theform2="ngForm" formGroupName="{{i}}"  > 
+        <ng-container *ngIf="we.value.trim()===''?true:searchWord2(we.value,names[i])>-1?true:false">
+        
+        <mat-card  style="margin-bottom:15px;position:relative;">
+
+      
+        <div style="position:absolute;width:90%;transform: translateY(-7px);" >
+          <ion-icon  (click)="deletePlayer(i)" style="float:right;font-size:20px;color:red;margin-left:2px" name="close-circle"></ion-icon>
+        
+          <button  (click)="presentModal(playname.textContent)" class="top-icon" ><ion-icon style="color:black"  name="pencil-outline"></ion-icon></button>
+      
+        </div>
+
+        <div #playname style="font-weight:500;font-size: 20px;">{{names[i]}}</div>
+
+
+        <div  class="those_stars" style="margin-left:6px;display: flex;">
+          <div [style.color]="add_topic.get(playname.textContent).star >=1 ?'rgb(231, 205, 10)':'' " (click)="starClick(1,playname.textContent)"><i   class="fa-solid fa-star  mystar"></i></div>
+          <div [style.color]="add_topic.get(playname.textContent).star >=2 ?'rgb(231, 205, 10)':'' " (click)="starClick(2,playname.textContent)"><i   class="fa-solid fa-star mystar"></i></div>
+          <div [style.color]="add_topic.get(playname.textContent).star >=3 ?'rgb(231, 205, 10)':'' " (click)="starClick(3,playname.textContent)"><i   class="fa-solid fa-star mystar"></i></div>
+          <div [style.color]="add_topic.get(playname.textContent).star >=4 ?'rgb(231, 205, 10)':'' " (click)="starClick(4,playname.textContent)"><i   class="fa-solid fa-star mystar"></i></div>
+         <div [style.color]="add_topic.get(playname.textContent).star >=5 ?'rgb(231, 205, 10)':'' " (click)="starClick(5,playname.textContent)"><i   class="fa-solid fa-star mystar"></i></div>
+         
+        </div>
+
+
+
+
+  
+        <div style="font-weight:400;margin-left:6px;font-size: 15px;">{{add_topic.get(playname.textContent).des}}</div>
+        
+        
+        <input  style="position:absolute;visibility:hidden;border:none  " formControlName="myname" />
+       <!-- <input placeholder="{{i+1}}" formControlName="id"/> -->
+        <div style="margin-left:7px"> 
+          <button [@sign_atr]="add_topic.get(names[i]).color"  style="font-size:12px;width:40px;text-align:center;width:fit-content;margin-right:20px " (click)="addSkill(i)"  mat-stroked-button color="primary"  >+ Attribute</button> 
+          
+          <mat-form-field class="form-card" appearance="standard">
+          <mat-label>Group</mat-label>
+
+          <mat-select (selectionChange)="group_choose(cardGroup.at(i),i)" disableOptionCentering panelClass="my-panel-card" [formControl]="cardGroup.at(i)"  >
+             
+              <mat-option *ngFor="let group of mygroups" [value]="group.group_name===''?'':group " >
+               <span *ngIf="group.group_name!==''" >{{group.group_name}}</span>
+               <span  *ngIf="group.group_name===''" >None</span>
+              </mat-option>
+
+          </mat-select>
+          </mat-form-field>
+
+
+        </div>
+
+          <div formArrayName="skills">
+          <div   style="margin-left:10px;margin-bottom:5px;" *ngFor="let u of getSkills(i).controls; index as r"  [formGroupName]="r">
+
+            
+            <table class="table_skill">
+              <tr>
+              
+
+                <td class="td_font" > <span  class="hidden_span">{{attr1s.value}}</span><input #attr1s style="display:none" formControlName="context_skill"   >    </td> 
+                <td style="padding-right:10px">
+                  <mat-form-field class="table_form_field" >
+                  <input  matInput  #t_skill    (focus)="focusSkill(playname.textContent,i,r)" (change)="alterSkill(playname.textContent,t_skill.value,t_lv.value,i,r,word_color.value)" style="width:60px" formControlName="skill"/> 
+                  <mat-error  *ngIf="getSkills(i).at(r).get('skill').invalid"   >{{getSkills(i).at(r).get('skill').errors.forbib}}</mat-error>
+                  </mat-form-field>
+                </td>
+                <td class="td_third"> 
+                  <div>
+                    <!--[formControl]="dna" -->
+                    <mat-select   panelClass="my-panel" disableOptionCentering  #the_select name="the_select"  formControlName="dna"    [style]="{'background': 'linear-gradient(to right, '+ getSkills(i).at(r).get('dna').value + ' 65%, white 30%) right'}"  [class]="matselect1+' '+ 'mat-selects'" (selectionChange)="alterColor(playname.textContent,t_skill.value,t_lv.value,the_select,i,r)"      type="text"   >
+                      <mat-option class="mat-options" *ngFor="let color of my_color" [value]="color" #the_option [ngStyle]="{'background-color':color }"><span [style.color]="color">s</span> </mat-option>
+                    </mat-select>
+
+                  </div>
+                </td >
+                <td class="td_forth" > <ion-button (click)="getSkills(i).removeAt(r);deleteSkill(playname.textContent,t_skill,t_lv,i)" style="width:10px;--background: rgb(221, 220, 213);"><i style="color:red;" class="fa-solid fa-trash"></i></ion-button> </td>
+              </tr> 
+              <tr>
+                 <td> <span class="hidden_span">{{attr2s.value}}</span> <input #attr2s    style="display:none" formControlName="context_lv" >     </td>
+                 <td>
+                  <mat-form-field class="table_form_field">
+                   <input  matInput #t_lv (submit)="lv_submit($event)" (focus)="focusSkill(playname.textContent,i,r)"   (change)="alterLv(playname.textContent,t_skill.value,t_lv.value,i,r,word_color.value)"   style="width:60px" formControlName="lv"  >
+                    <mat-error *ngIf="getSkills(i).at(r).get('lv').invalid" >
+                      {{getSkills(i).at(r).get('lv').errors.forbib}}
+                    </mat-error>
+                </mat-form-field>
+                </td>
+                 
+                <td > 
+                   
+                      <mat-form-field  class="myposition"    >
+                        <mat-label>Align</mat-label> 
+                         <mat-select (selectionChange)="alterColor(playname.textContent,t_skill.value,t_lv.value,the_select,i,r)" disableOptionCentering formControlName="myposition" > 
+                          <mat-option  *ngFor="let pos of specified_pos" [value]="pos">{{pos.value}}</mat-option>
+                         </mat-select>
+                      </mat-form-field>
+                   
+
+                </td> 
+                <td class="td_forth">
+                  <mat-form-field  class="myposition2"  >
+                      <mat-label>Order</mat-label>
+                      <input matInput formControlName="myorder" (change)="alterColor(playname.textContent,t_skill.value,t_lv.value,the_select,i,r)" />
+                      <mat-error *ngFor="let error of invalid_order">
+                          <mat-error *ngIf="getSkills(i).at(r).get('myorder').hasError(error.text)">{{error.message}}</mat-error> 
+                      </mat-error>
+
+                  </mat-form-field>
+
+
+
+                </td> 
+
+              </tr>
+           
+            </table>
+
+
+            <input #word_color formControlName="mycolor" style="visibility:hidden;position:absolute"  >
+            <input #word_color formControlName="mybullet" style="visibility:hidden;position:absolute"  >
+          
+          </div> 
+          </div>
+
+
+         
+          </mat-card>
+
+
+          </ng-container>
+        </form>
+          
+
+        </div>
+      
+      </div> 
+    
+    
+   
+
+  
+  
+ </form>
+  
+  
+
+
+
+
+
+
+
+
+  <!-- 
+    <mat-grid-list cols="2" rowHeight="30px">
+      <form>
+      <mat-grid-tile > UserName </mat-grid-tile>
+      <mat-grid-tile> <ion-input type="text" name=username placeholder="insert" [(ngModel)]="username"></ion-input></mat-grid-tile>
+       
+      <mat-grid-tile>Password</mat-grid-tile>
+      <mat-grid-tile> <ion-input type="password" name=pass [(ngModel)]="password" placeholder="insert"></ion-input></mat-grid-tile>
+      
+      <mat-grid-tile><ion-button   style="font-size:10px;width:60px" type="submit" (click)="onSubmit()">Submit</ion-button></mat-grid-tile>
+      </form>
+    </mat-grid-list>
+  -->
+
+  <!--  
+  <form>
+    <mat-form-field appearance="standard">
+      <mat-label>Username</mat-label>
+      <input matInput name="username" [(ngModel)]="username" placeholder="Placeholder">
+      <mat-icon matSuffix> <i class="material-icons">arrow_back</i></mat-icon>
+      <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Pass</mat-label>
+    <input matInput name="password  " [(ngModel)]="password" placeholder="Placeholder">
+    <mat-icon matSuffix> <i class="material-icons">arrow_back</i></mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+  <ion-button   style="font-size:10px;width:60px" type="submit" (click)="onSubmit()">Submit</ion-button>
+</form>
+-->
+
+
+
+
+   <!--
+    <button mat-fab color="accent"><ion-icon style="font-size: 20px;" name="alarm-outline"></ion-icon></button>
+
+    <mat-card>
+      
+      <mat-card-content>
+        
+        <textarea></textarea>
+      
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button >ss</button>
+
+      </mat-card-actions>
+    </mat-card>
+
+
+    
+  -->
+
+
+  <!--<mat-form-field>
+    <mat-select disableOptionCentering (selectionChange)="total_price()" [formControl]="top" multiple >
+       <mat-select-trigger>
+         
+         <span>{{top.value[0]?.food}}&nbsp;</span>
+         <span *ngIf="top.value.length>1"  >+</span> 
+         <span>{{top.value.length-1 >=1? top.value.length-1 :''}}  </span>
+         <span>{{top.value.length-1==0 ? '' :top.value.length-1==1 ? 'other' : 'others'}}</span> 
+  
+       </mat-select-trigger>
+       <mat-option  *ngFor="let topping of toppingList" [value]="topping" >
+           {{topping.food}}{{" "}}{{topping.price}}{{"$"}}
+       </mat-option>
+    </mat-select>   
+    </mat-form-field> 
+
+  <div style="font-size:20px;color:black">Total price:&nbsp;{{total}}{{" "}}{{"$"}}</div>
+  -->
+  </div>
+</ion-content>
+
+
+
+
+
