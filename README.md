@@ -1,5 +1,6 @@
 # Memory_card
-https://memorycard-4f859.web.app/home
+* Link: https://memorycard-4f859.web.app/home
+* Demo: https://youtu.be/pwbkwa7UlGU
 ## Step to reproduce
 ### npm package
 - install npm package, if your local machine don't have it yet. https://nodejs.org/en/download
