@@ -8,4 +8,4 @@ https://memorycard-4f859.web.app/home
 1. Download the file in VSCode
 2. Open Terminal, use command "npm i"
 3. command "npm run start"
-s
+
