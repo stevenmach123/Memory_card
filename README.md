@@ -1,5 +1,5 @@
 # Memory_card
-* Link: https://memorycard-4f859.web.app/home
+* Link: https://memorycard-4f859.web.app/home (Mobile view also available :) )
 * Demo: https://youtu.be/pwbkwa7UlGU
 ## Step to reproduce
 ### npm package
